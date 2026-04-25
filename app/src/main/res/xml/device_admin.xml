@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <!-- 管理工作资料 -->
+        <manage-profile />
+        <!-- 限制用户切换 -->
+        <disable-camera />
+    </uses-policies>
+</device-admin>

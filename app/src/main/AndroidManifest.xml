@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 权限声明 -->
+    <uses-permission android:name="android.permission.MANAGE_USERS" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    
+    <!-- 设备管理员权限 -->
+    <uses-permission android:name="android.permission.BIND_DEVICE_ADMIN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@android:drawable/ic_menu_multipress"
+        android:label="多开管理器"
+        android:roundIcon="@android:drawable/ic_menu_manage"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MultiOpen">
+
+        <!-- 主界面 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="多开管理器">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设备管理员接收器 -->
+        <receiver
+            android:name=".ProfileAdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.PROFILE_PROVISIONING_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
